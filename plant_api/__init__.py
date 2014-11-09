@@ -15,15 +15,12 @@ class CoffeeifyFilter(Filter):
 
 register_filter(CoffeeifyFilter)
 
-
-app = Flask(__name__)
-
-assets = Environment(app)
-
-# api = restful.Api(app)
-# api.add_resource(Page, '/pages/<int:page_id>')
-
-js = Bundle('coffee/main.coffee', filters=['coffeeify'], output='main.js')
-assets.register('js_all', js)
-
-import plant_api.views
+def create_app():
+    app = Flask(__name__)
+    app.config['TESTING'] = True
+    assets = Environment(app)
+    js = Bundle('coffee/main.coffee', filters=['coffeeify'], output='main.js')
+    assets.register('js_all', js)
+    from views import api_blueprint
+    app.register_blueprint(api_blueprint)
+    return app
