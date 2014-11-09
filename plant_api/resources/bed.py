@@ -8,6 +8,6 @@ class Bed(restful.Resource):
     def get(self, bed_id):
         return {
             'type': 'bed',
-            'id': bed,
+            'id': bed_id,
             'arg': parser.parse_args()['arg']
         }
