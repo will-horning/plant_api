@@ -1,4 +1,5 @@
 from flask.ext.assets import Environment, Bundle
+from subprocess import check_output
 from webassets.filter import Filter, register_filter
 
 class CoffeeifyFilter(Filter):

@@ -1,5 +1,4 @@
 import pymongo, os
-from subprocess import check_output
 from flask import Flask
 from flask.ext.pymongo import PyMongo
 mongo = PyMongo()
