@@ -1,13 +1,11 @@
 from flask.ext import restful
 from flask.ext.restful import reqparse
+from util import bson_wrapper
 
 parser = reqparse.RequestParser()
 parser.add_argument('arg', type=int)
 
 class Geo(restful.Resource):
+    @bson_wrapper
     def get(self, geo_id):
-        return {
-            'type': 'geo',
-            'id': geo_id,
-            'arg': parser.parse_args()['arg']
-        }
+        return mongo.db.users.find_one_or_404({'_id': geo_id})
