@@ -1,9 +1,6 @@
 import plant_api, pytest, json
+from .test_main import plant_api_app
 
-
-@pytest.fixture(scope='module')
-def plant_api_app():
-    return plant_api.create_app()
 
 def test_bed(plant_api_app):
     with plant_api_app.test_client() as client:

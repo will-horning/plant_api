@@ -1,5 +1,6 @@
 from flask.ext import restful
 from flask.ext.restful import reqparse
+from plant_api import mongo
 from util import bson_wrapper
 
 parser = reqparse.RequestParser()
