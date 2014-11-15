@@ -1,6 +1,6 @@
 import pytest
 from flask.ext.script import Manager, Shell, Server
-from plant_api.app import create_app, mongo
+from plant_api.app import create_app
 from plant_api.settings import ProdConfig, DevConfig, TestConfig
 
 app = create_app(TestConfig)
@@ -8,7 +8,7 @@ app = create_app(TestConfig)
 manager = Manager(app)
 
 def _make_context():
-    return {'app': app, 'db': mongo.db}
+    return {'app': app}
 
 @manager.command
 def test():
