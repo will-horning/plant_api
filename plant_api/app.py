@@ -4,10 +4,9 @@ from flask.ext.pymongo import PyMongo
 mongo = PyMongo()
 
 
-def create_app(config={}):
+def create_app(config):
     app = Flask(__name__)
-    app.config.update(config)
-    app.config['MONGO_URI'] = os.environ['MONGOLAB_TEST_URI'] 
+    app.config.from_object(config)
     mongo.init_app(app)
     from assets import assets
     assets.init_app(app)

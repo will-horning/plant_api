@@ -1,8 +1,9 @@
 import pytest
 from flask.ext.script import Manager, Shell, Server
 from plant_api.app import create_app, mongo
+from plant_api.settings import ProdConfig, DevConfig, TestConfig
 
-app = create_app({'TESTING': True})
+app = create_app(TestConfig)
 
 manager = Manager(app)
 
